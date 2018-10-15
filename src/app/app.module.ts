@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { AlertMessagesComponent } from './shared/alert-messages.component';
 import { NgxCaptchaModule } from '../projects/ngx-captcha-lib/src/lib/ngx-captcha.module';
+import { SignInComponent } from './security/sign-in.component';
 
 
 
@@ -20,7 +21,8 @@ import { NgxCaptchaModule } from '../projects/ngx-captcha-lib/src/lib/ngx-captch
     AppComponent,
     HomeComponent,
     SignUpComponent,
-    AlertMessagesComponent
+    AlertMessagesComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
