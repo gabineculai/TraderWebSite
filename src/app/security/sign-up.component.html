@@ -1,0 +1,46 @@
+<form [formGroup]="aFormGroup">
+  <div *ngIf="!registationSucesfull" class="row mt-5">
+    <div class="col-lg-3 ">
+    </div>
+    <div class="col-lg-6 form-group-lg">
+
+        <div class="form-group">
+          <label for="exampleInputEmail">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter email" #email [(ngModel)]="userForSignUp.UserEmail" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" [(ngModel)]="userForSignUp.UserPassword" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPasswordRe">Verify Password</label>
+          <input type="password" class="form-control" id="exampleInputPasswordRe" placeholder="Verify Password" [(ngModel)]="passwordRe" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <ngx-recaptcha2 #captchaElem
+                  [siteKey]="siteKey"
+                  (expire)="handleExpire()"
+                  (load)="handleLoad()"
+                  (success)="handleSuccess($event)"
+                  [size]="size"
+                  [hl]="lang"
+                  [theme]="theme"
+                  [type]="type"
+                  formControlName="recaptcha">
+          </ngx-recaptcha2>
+        </div>
+        <div>{{message}}</div>
+        <div class="tooltip-wrapper" title="{{(!canSubmit? 'Please do the Captcha check!' : '')}}">
+          <button type="submit" class="btn btn-primary" (click)="OnSubmit()" [disabled]="!canSubmit">Submit</button>
+        </div>
+        
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-lg-3 ">
+    </div>
+    <div class="col-lg-6 form-group-lg">
+        <app-alert-messages [Messages]="messages"></app-alert-messages>
+    </div>
+  </div>      
+</form>
